@@ -1,0 +1,49 @@
+@use 'styles/_mixins.scss' as mixins;
+
+.Button {
+  position: relative;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @include mixins.hover-otherwise-active {
+    box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.1);
+  }
+
+  // Colors variants
+  background: transparent;
+  color: var(--color-on-surface);
+
+  &.primary {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  &.secondary {
+    background: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+}
+
+.raised {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  @include mixins.hover-otherwise-active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 300px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.IconButton {
+  color: inherit;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}

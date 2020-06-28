@@ -1,0 +1,23 @@
+// Prevents "sticky hover" on touch devices
+@mixin on-hover {
+  @media (hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Includes the rules on :hover on devices that support it, otherwise on :active
+@mixin hover-otherwise-active {
+  @media (hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@use 'styles/_variables.scss' as vars;
+
+
+.Book {
+  max-width: 300px;
+  text-align: center;
+}
+
+.Book-title {
+  margin-top: 12px;
+  font-size: 1.1em;
+}
+
+.Book-authors {
+  color: #999;
+  font-size: 1.05em;
+  margin: 4px 0;
+}
+
+.Book-year {
+  color: #999;
+  font-size: 1em;
+}
+
+.Book-top {
+  position: relative;
+  height: 200px;
+  width: 140px;
+  margin: 0 auto;
+  background: #2d2d2d;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.Book-cover {
+  position: relative;
+  overflow: hidden;    /* to hide the shelf ribbon */
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.Book-cover img {
+  width: 100%;
+  height: 100%;
+}
+
+.Book-cover-placeholder {
+  text-align: center;
+  color: rgb(225, 225, 225);
+  padding: 2em;
+  margin: auto;
+}
+
+.BookActionMenuTrigger {
+  position: absolute;
+  right: -12px;
+  bottom: -10px;
+  button {
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+  }
+}
+
+.Book-ribbon {
+  position: absolute;
+  top: 10px;
+  right: -40px;
+  width: 150px;
+  transform: rotate(35deg);
+  background: #60ac5d;
+  color: white;
+  text-align: center;
+  padding: 0.2em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 0.95em;
+  border: 2px solid white;
+
+  &.currently-reading {
+    background: var(--color-shelf-reading);
+  }
+
+  &.want-to-read {
+    background: var(--color-shelf-want-to-read);
+  }
+
+  &.read {
+    background: var(--color-shelf-read);
+  }
+}

@@ -1,0 +1,180 @@
+@use 'styles/_variables.scss' as vars;
+@use 'styles/_mixins.scss' as mixins;
+
+.Search {
+  position: relative;
+}
+
+/*****************************************
+ *  Search input field
+ *****************************************/
+.SearchField {
+  position: relative;
+  flex: 1;
+  padding: 4px;
+  margin: 0 8px;
+  border-radius: 5px;
+  min-width: 0;
+  max-width: 20em;
+
+  font-size: 1.2em;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--header-color-text);
+
+  display: flex;
+  align-items: center;
+
+  @include mixins.on-hover {
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.1);
+  }
+
+  &.onFocus {
+    max-width: 20em;
+    //transition: max-width 0.3s;
+    .SearchField-icon {
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    width: 0;
+    padding: 8px 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    color: white;
+  }
+
+  input::placeholder {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.SearchField-icon {
+  width: 40px;
+  text-align: center;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.SearchField-clear {
+  border: 0;
+  border-radius: 50%;
+  outline: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 30px;
+  width: 35px;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 1;
+
+  &.hidden {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s;
+  }
+
+  @include mixins.hover-otherwise-active {
+    color: white;
+  }
+
+  &:active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media screen and (max-width: vars.$sm) {
+  .SearchField-icon {
+    display: none;
+  }
+
+  .SearchField input {
+    padding-left: 16px;
+  }
+}
+
+
+/*****************************************
+ *  Search body
+ *****************************************/
+.Search-content {
+  max-width: vars.$content-max-width;
+  min-height: 100%;
+  padding: 20px 32px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--color-surface);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/*****************************************
+ *  Search help
+ *****************************************/
+.SearchHelp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.SearchHelp-illustration {
+  flex: 0 1;
+  max-width: 250px;
+  margin: 1em 0;
+}
+
+.SearchHelp-text {
+  max-width: 28em;
+  margin: 16px auto;
+}
+
+.SearchHelp-term-list {
+  max-width: 0.9 * vars.$content-max-width;
+  margin: 16px auto;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  li {
+    margin: 4px;
+  }
+}
+
+//====================
+//  Search term chips
+.search-term-chip {
+  font-size: 1.1rem;
+  display: inline-block;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: .25em .75em;
+  cursor: pointer;
+  background: #e0e0e0;
+  color: #6b6b6b;
+
+  .theme.dark & {
+    background: rgba(255, 255, 255, 0.15);
+    color: #d5d5d5;
+  }
+
+  .theme.dark &, .theme.light & {
+    @include mixins.hover-otherwise-active {
+      background-color: var(--color-secondary);
+      color: white;
+    }
+  }
+}

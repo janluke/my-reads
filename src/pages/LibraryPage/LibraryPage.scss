@@ -1,0 +1,28 @@
+@use "styles/_variables.scss" as vars;
+
+.Library-content {
+  max-width: vars.$content-max-width;
+  margin: 0 auto;
+  padding: 20px 12px 50px;
+}
+
+.Library-logo-wrapper, .Library-action-items {
+  flex: 0 1 200px;  // Same flex-basis to center the Nav
+  display: flex;
+  align-items: center;
+}
+
+.Library-logo-wrapper {
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.Library-action-items {
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: vars.$sm) {
+  .Library-nav {
+    display: none;
+  }
+}

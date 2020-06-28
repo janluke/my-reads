@@ -1,0 +1,32 @@
+@use 'styles/_variables.scss' as vars;
+
+.Scaffold {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.Scaffold-body {
+  position: relative;
+  flex: 1;
+  padding-top: vars.$header-height;
+}
+
+.Scaffold-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media screen and (max-width: vars.$md) {
+  .Scaffold-body {
+    padding-top: vars.$header-height-sm;
+  }
+}
+
+@media screen and (max-width: vars.$sm) {
+  .Scaffold-body {
+    padding-top: vars.$header-height-xs;
+  }
+}

@@ -1,0 +1,88 @@
+
+.theme, .theme.light {
+  --color-primary: #1976d2;
+  --color-primary-light: #80c0ff;
+  --color-secondary: rgb(96, 172, 93);
+  --color-body: #f2f2f2;
+  --color-surface: white;
+  --color-surface-edge: #dedede;
+
+  --color-error: #ff0000;
+  --color-on-primary: white;
+  --color-on-secondary: white;
+  --color-on-body: #313131;
+  --color-on-surface: #313131;
+
+  /* Header */
+  --header-color-bg: var(--color-primary);
+  --header-color-text: var(--color-on-primary);
+
+  /* Shelf colors */
+  --color-shelf-reading: rgb(0, 153, 255);
+  --color-shelf-want-to-read: rgb(0, 161, 161);
+  --color-shelf-read: rgb(104, 195, 0);
+
+  height: 100%;
+}
+
+.theme.dark {
+  --color-body: #212121;
+  --color-surface: #333333;
+
+  --color-on-body: white;
+  --color-on-surface: white;
+  --color-surface-edge: #555555;
+
+  /* Header */
+  --header-color-bg: var(--color-surface);
+  --header-color-text: var(--color-on-surface);
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  text-align: left;
+  background: var(--color-body);
+  color: var(--color-on-body);
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto Condensed';
+  //text-transform: uppercase;
+  font-weight: 500;
+}
+
+:focus { outline: none; }
+::-moz-focus-inner {border:0;}
+
+.Toastify__toast-body {
+  padding: 12px;
+  font-family: 'Roboto';
+}
+
+.Toastify__toast--info {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.Toastify__toast--warning {
+  background-color: #ff6200;
+  color: white;
+}
+
+.Toastify__toast--error {
+  background-color: var(--color-error);
+  color: white;
+}
+
+// Animations
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

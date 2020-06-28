@@ -1,0 +1,74 @@
+@use 'styles/_variables.scss' as vars;
+
+.Header {
+  position: relative;
+  height: vars.$header-height;
+  width: 100%;
+  z-index: 10;
+  font-size: 1rem;
+
+  background-color: var(--header-color-bg);
+  color: var(--header-color-text);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.20);
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  a {
+    color: inherit;
+    &:active {
+      background: none;
+    }
+  }
+
+  .IconButton {
+    color: inherit;
+    font-size: 1.5em;
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.HeaderLayout {
+  height: 100%;
+  max-width: vars.$content-max-width;
+  margin: 0 auto;
+
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+@media screen and (max-width: vars.$md) {
+  .Header {
+    height: vars.$header-height-sm;
+    font-size: .9rem;
+
+    .IconButton {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: vars.$sm) {
+  .Header {
+    height: vars.$header-height-xs;
+    font-size: 0.8rem;
+
+    .IconButton {
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
+
+.Header-logo {
+  height: 50%;
+  margin: 8px 16px 0px;
+}

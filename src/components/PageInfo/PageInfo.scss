@@ -1,0 +1,55 @@
+
+.PageInfo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  background: var(--color-surface);
+
+  .theme.dark & {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
+  }
+
+  .theme.light & {
+    background: radial-gradient(circle at center, #ffffff, #dcdcdc);
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+
+  &.error {
+    .PageInfo-title {
+      color: var(--color-error);
+    }
+  }
+}
+
+.PageInfo-illustration {
+  flex: 0 1;
+  max-width: 250px;
+  margin: 0;
+}
+
+.PageInfo-content {
+  max-width: 30em;
+  margin: 8px auto;
+}
+
+.PageInfo-title {
+  font-family: 'Lobster Two';
+  font-size: 2rem;
+  color: var(--color-secondary);
+  margin: 4px 0;
+}
+
+.PageInfo-text {
+  margin: 4px 0;
+}
