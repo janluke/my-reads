@@ -64,7 +64,6 @@ The purpose of the project is familiarizing with React and React Router.
   * `iblis-react-undraw` for using the awesome [Undraw illustrations](https://undraw.co/)
     changing the primary/accent color;
   * `react-toastify` for toasts.
-  [Undraw illustrations](https://undraw.co/) 
 - **Animations**: I used `react-flip-toolkit` for animating the grids and occasionally
   CSS transitions/keyframes.
 
