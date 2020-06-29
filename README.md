@@ -43,8 +43,8 @@ The purpose of the project is familiarizing with React and React Router.
   updated. If the operation doesn't succeed server-side, the optimistic update is reverted
   and the app shows a toast with an error message.
 
-- **Debounced search.** The search input field is debounced and, in general, prevent
-  unnecessary API requests.
+- **Debounced search.** The search input field is debounced and, in general, the implemented logic
+  prevents unnecessary API requests.
 
 - **(Experimental) Stale tab detection.** The API endpoint for updating books
    returns the state of the bookshelves in terms of book IDs. After a book is updated,
