@@ -1,12 +1,14 @@
 # MyReads   <!-- omit in toc -->
 
 - [Description](#description)
+  - [What differentiates my implementation](#what-differentiates-my-implementation)
+  - [Tools and libraries](#tools-and-libraries)
 - [Available Scripts](#available-scripts)
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
   - [`npm run build`](#npm-run-build)
   - [`npm run eject`](#npm-run-eject)
-- [The backend API](#the-backend-api)
+- [The backend server](#the-backend-server)
   - [`getAll()`](#getall)
   - [`update(book, shelf)`](#updatebook-shelf)
   - [`search(query)`](#searchquery)
@@ -15,14 +17,46 @@
 
 ## Description
 
-This is my implementation of the first project of the Udacity React Nanodegree.
-It's a simple app for tracking books you are currently reading, want to read or have already read.
+**Demo:** https://janluke.github.io/my-reads/#/
 
-The app uses a "dummy" API provided by Udacity. When the app is opened the first
-time, a random token is generated and locally stored (using `window.localStorage`).
-This token is sent to the server at each request and it's used for identifying the client.
+A simple React app for tracking the books you are currently reading,
+want to read or have already read.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my implementation of the final assessment project for the Udacity's 
+"React Fundamentals" course, part of the React Nanodegree Program.
+The purpose of the project is familiarizing with React and React Router.
+
+### What differentiates my implementation
+
+- **Restyling.** The app was built from scratch and was restyled wrt the one provided
+  by Udacity. However, I kept the structure of the app the same, even if not optimal
+  for the UX. That's mostly because I decided to not use an external component library
+  to force myself practicing CSS. On the other hand, implementing what I had in mind
+  was a little too time-consuming for being worthwhile.
+
+- **Theming.** I implemented light/dark theming using scoped CSS variables.
+   A theme is just a CSS class containing variables (e.g. `--color-primary`).
+   I wrapped the entire application with a `div` node whose class attribute is set
+   to current theme class. Changing theme is as easy as changing the `div` class.
+  
+- **Debounced search.** The search input field is debounced and, in general, prevent
+  unnecessary API requests.
+
+- **(Experimental) Stale tab detection.** The API endpoint for updating books
+   returns the state of the bookshelves in terms of book IDs. After a book is updated,
+   I use this data to check if the app state is stale and if it is, I re-fetch
+   all books, informing the user with a toast.
+
+### Tools and libraries
+
+- **Bootstrapping**: [Create React App](https://github.com/facebook/create-react-app).
+- **Routing**: React Router and `react-router-hash-link`.
+- **Styling**: Sass, but I didn't use much its features.
+- **State management**: none, because it was out of scope. Redux is the central topic
+  of the 2nd course. I used the Context API though.
+- **Library of components**: none, because I wanted to practice CSS.
+- **Animations**: I used `react-flip-toolkit` for animating the grids and occasionally
+  CSS transitions/keyframes.
 
 
 ## Available Scripts
@@ -32,7 +66,6 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
@@ -63,10 +96,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 
-## The backend API
+## The backend server
 
-The web API is not very well documented by Udacity (maybe intentionally?).
-This section is a copy of the provided API documentation with additional notes.
+The app uses a "dummy" backend server provided by Udacity, which exposes a REST API.
+The REST API is not very well documented by Udacity (maybe intentionally?).
+This section is a copy of the provided API documentation with additional notes
+I took when I started working on the project. Maybe it can be of help to other students.
 
 ### `getAll()`
 
