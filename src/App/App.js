@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import cn from 'classnames';
 import { SvgPageNotFound } from 'iblis-react-undraw';
 import { toast, ToastContainer } from 'react-toastify';
@@ -175,7 +175,7 @@ export class App extends React.Component {
     let { booksByID, loading, error, theme } = this.state;
 
     return (
-      <BrowserRouter>
+      <Router basename="/">
         <div className={cn("theme", theme)}>
           <div className="App">
             <ToastContainer />
@@ -200,7 +200,7 @@ export class App extends React.Component {
             </LibraryContext.Provider>
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
