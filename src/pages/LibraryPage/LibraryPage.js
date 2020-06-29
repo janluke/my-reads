@@ -34,7 +34,7 @@ function LibraryPageHeader() {
         <Nav className="Library-nav">
           {Shelves.inDisplayOrder.map(shelf => (
             <Nav.Item key={shelf.id}>
-              <HashLink to={`/#${shelf.slug}`} scroll={scrollToElement}>
+              <HashLink to={`#${shelf.slug}`} scroll={scrollToElement}>
                 {shelf.shortDisplayName}
               </HashLink>
             </Nav.Item>
