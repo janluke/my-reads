@@ -155,9 +155,10 @@ class SearchPage extends React.Component {
         // Note that fetchResults() never sends a request with an empty query.
         this.setState({ results: [], resultsQuery: query, loading: false });
       }
-      else { // This should never happen
-        console.error(results.error);
-        this.setState({ loading: false, error: results.error });
+      else { // It's not documented if this endpoint can return other kind of errors. Just in case...
+        let error = Error(results.error);
+        console.error(error);
+        this.setState({ loading: false, error });
       }
     }
     else {  // No errors
