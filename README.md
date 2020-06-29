@@ -38,7 +38,11 @@ The purpose of the project is familiarizing with React and React Router.
    A theme is just a CSS class containing variables (e.g. `--color-primary`).
    I wrapped the entire application with a `div` node whose class attribute is set
    to current theme class. Changing theme is as easy as changing the `div` class.
-  
+
+- **Optimistic updates.** When the user changes the shelf of a book, the UI gets immediately
+  updated. If the operation doesn't succeed server-side, the optimistic update is reverted
+  and the app shows a toast with an error message.
+
 - **Debounced search.** The search input field is debounced and, in general, prevent
   unnecessary API requests.
 
@@ -54,7 +58,13 @@ The purpose of the project is familiarizing with React and React Router.
 - **Styling**: Sass, but I didn't use much its features.
 - **State management**: none, because it was out of scope. Redux is the central topic
   of the 2nd course. I used the Context API though.
-- **Library of components**: none, because I wanted to practice CSS.
+- **Library of components**: none, because I wanted to practice CSS. Nonetheless, I used
+  external packages for some specific components:
+  * `react-loading` for the loading indicator;
+  * `iblis-react-undraw` for using the awesome [Undraw illustrations](https://undraw.co/)
+    changing the primary/accent color;
+  * `react-toastify` for toasts.
+  [Undraw illustrations](https://undraw.co/) 
 - **Animations**: I used `react-flip-toolkit` for animating the grids and occasionally
   CSS transitions/keyframes.
 
