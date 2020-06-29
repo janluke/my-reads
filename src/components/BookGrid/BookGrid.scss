@@ -16,6 +16,7 @@
   margin: 20px 12px;
   display: flex;
   justify-content: center;
+  animation: fade-in 300ms;
 }
 
 @media screen and (max-width: vars.$sm) {
