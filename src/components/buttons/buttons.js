@@ -5,7 +5,7 @@ import './buttons.scss';
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 
-export function Button({ color, raised, className, style, children, onClick, ...props }) {
+export const Button = React.memo(({ color, raised, className, style, children, onClick, ...props }) => {
   return (
     <button
       {...props}
@@ -16,7 +16,7 @@ export function Button({ color, raised, className, style, children, onClick, ...
       {children}
     </button>
   );
-}
+});
 
 Button.defaultProps = {
   'raised': false
