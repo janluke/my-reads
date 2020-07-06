@@ -46,11 +46,6 @@ The purpose of the project is familiarizing with React and React Router.
 - **Debounced search.** The search input field is debounced and, in general, the implemented logic
   prevents unnecessary API requests.
 
-- **(Experimental) Stale tab detection.** The API endpoint for updating books
-   returns the state of the bookshelves in terms of book IDs. After a book is updated,
-   I use this data to check if the app state is stale and if it is, I re-fetch
-   all books, informing the user with a toast.
-
 ### Tools and libraries
 
 - **Bootstrapping**: [Create React App](https://github.com/facebook/create-react-app).
