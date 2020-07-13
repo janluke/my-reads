@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import cn from 'classnames';
 import { SvgPageNotFound } from 'iblis-react-undraw';
 import { toast, ToastContainer } from 'react-toastify';
