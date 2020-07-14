@@ -17,7 +17,7 @@
 
 ## Description
 
-**Demo:** https://janluke.github.io/my-reads/#/
+**Demo:** https://janluke-myreads.netlify.app/
 
 A simple React app for tracking the books you are currently reading,
 want to read or have already read.
