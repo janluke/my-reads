@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { debounce } from 'debounce';
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SvgNotFound, SvgSearch } from 'iblis-react-undraw';
@@ -12,7 +11,7 @@ import { searchTerms } from "constants.js";
 import BookGrid from "components/BookGrid";
 import PageInfo from "components/PageInfo";
 import { Header, HeaderLayout } from 'components/Header';
-import { BackButton } from "components/buttons";
+import { SmartBackButton } from "components/buttons";
 import { ThemeSwitcher } from "components/utils";
 import './SearchPage.scss';
 import Scaffold from "../../components/Scaffold";
@@ -109,10 +108,6 @@ class SearchPage extends React.Component {
     results: [],
     error: null
   }
-
-  // componentDidMount() {
-  //   window.scroll(0, 0);
-  // }
 
   onInputQueryChange = (value) => {
     this.setState({ inputQuery: value });
@@ -215,9 +210,7 @@ class SearchPage extends React.Component {
         header={(
           <Header position="fixed" className="Search-header">
             <HeaderLayout>
-              <Link to="/">
-                <BackButton />
-              </Link>
+              <SmartBackButton />
 
               <SearchField
                 placeholder="Search books..."
