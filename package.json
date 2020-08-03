@@ -19,7 +19,6 @@
     "react-flip-toolkit": "^7.0.12",
     "react-loading": "^2.0.3",
     "react-router-dom": "^5.2.0",
-    "react-router-hash-link": "^1.2.2",
     "react-scripts": "3.4.1",
     "react-toastify": "^6.0.6",
     "sass": "^1.26.8"

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link';
+import { Link, useLocation } from "react-router-dom";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+import './LibraryPage.scss';
 import { Shelves } from "constants.js";
 import { valuesOf } from "utils.js";
 import Bookshelf from "components/Bookshelf";
@@ -12,15 +12,7 @@ import Nav from "components/Nav";
 import { Header, HeaderLayout } from 'components/Header';
 import { IconButton } from "components/buttons/buttons";
 import { ThemeSwitcher } from "components/utils";
-import './LibraryPage.scss';
-
-
-function scrollToElement(el, offsetTop=-100) {
-  window.scrollTo({
-    top: el.offsetTop + offsetTop,
-    behavior: 'smooth'
-  })
-}
+import { scrollToElement } from "utils";
 
 function LibraryPageHeader() {
   return (
@@ -34,9 +26,9 @@ function LibraryPageHeader() {
         <Nav className="Library-nav">
           {Shelves.inDisplayOrder.map(shelf => (
             <Nav.Item key={shelf.id}>
-              <HashLink to={`#${shelf.slug}`} scroll={scrollToElement}>
+              <Link to={`#${shelf.slug}`}>
                 {shelf.shortDisplayName}
-              </HashLink>
+              </Link>
             </Nav.Item>
           ))}
         </Nav>
@@ -61,7 +53,6 @@ function groupBooksByShelf(books) {
   return byShelf;
 }
 
-
 const LibraryPageBody = React.memo(({ booksByID }) => {
   let booksByShelfID = groupBooksByShelf(valuesOf(booksByID));
   return (
@@ -81,6 +72,22 @@ const LibraryPageBody = React.memo(({ booksByID }) => {
 });
 
 const LibraryPage = React.memo(({ booksByID, loading, error }) => {
+  let location = useLocation();
+  const { hash } = location;
+  useEffect(() => {   // Scroll to a shelf based on the URL fragment
+    if (hash) {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element)
+          scrollToElement(element, {
+            behavior: 'smooth',
+            offset: -100
+          });
+      }, 0);
+    }
+  }, [hash]);
+
   return (
     <Scaffold
       loading={loading}
@@ -91,12 +98,6 @@ const LibraryPage = React.memo(({ booksByID, loading, error }) => {
       renderBody={
         () => <LibraryPageBody booksByID={booksByID} />
       }
-      // The FAB was replaced by an action item in the header
-      // floatingActionButton={(
-      //   <Link to="/search">
-      //     <IconButton raised color="primary" icon={faPlus} />
-      //   </Link>
-      // )}
     />
   );
 });

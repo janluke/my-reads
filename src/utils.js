@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const keysOf = Object.keys;
 export const valuesOf = Object.values;
@@ -39,4 +40,11 @@ export function useClickOutside(ref, callback) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, callback]);
+}
+
+export function scrollToElement(el, { behavior = 'smooth', offset = 0 } = {}) {
+  window.scrollTo({
+    top: el.offsetTop + offset,
+    behavior
+  })
 }
