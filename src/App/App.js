@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import cn from 'classnames';
 import { SvgPageNotFound } from 'iblis-react-undraw';
 import { toast, ToastContainer } from 'react-toastify';
@@ -18,13 +18,11 @@ export const ThemeContext = React.createContext({
   setTheme: (theme) => null
 });
 
-
 // I don't see the necessity to include [booksByID] in this context. I'm passing
 // an object as value so that it's more easily expandable
 export const LibraryContext = React.createContext({
   updateBookShelf: (book, shelf) => null
 });
-
 
 export class App extends React.Component {
   constructor(props) {
@@ -89,8 +87,7 @@ export class App extends React.Component {
         toast.error(`Your last operation was rejected by the server. Details: "${serverShelves.error}"`);
         revertLocalUpdate();
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       toast.error(`Your last operation did not succeed. Error details: "${error.message}"`);
       revertLocalUpdate();
@@ -132,32 +129,30 @@ export class App extends React.Component {
     let { booksByID, loading, error, theme } = this.state;
 
     return (
-      <Router basename="/">
-        <div className={cn("theme", theme)}>
-          <div className="App">
-            <ToastContainer />
-            <LibraryContext.Provider value={this.libraryContext}>
-              <ThemeContext.Provider value={this.themeContext}>
-                <Switch>
+      <div className={cn("theme", theme)}>
+        <div className="App">
+          <ToastContainer />
+          <LibraryContext.Provider value={this.libraryContext}>
+            <ThemeContext.Provider value={this.themeContext}>
+              <Switch>
 
-                  <Route exact path="/">
-                    <LibraryPage booksByID={booksByID} loading={loading} error={error} />
-                  </Route>
+                <Route exact path="/">
+                  <LibraryPage booksByID={booksByID} loading={loading} error={error} />
+                </Route>
 
-                  <Route exact path="/search">
-                    <SearchPage booksByID={booksByID} loading={loading} error={error} />
-                  </Route>
+                <Route exact path="/search">
+                  <SearchPage booksByID={booksByID} loading={loading} error={error} />
+                </Route>
 
-                  <Route path="*">
-                    <Error404 />
-                  </Route>
+                <Route path="*">
+                  <Error404 />
+                </Route>
 
-                </Switch>
-              </ThemeContext.Provider>
-            </LibraryContext.Provider>
-          </div>
+              </Switch>
+            </ThemeContext.Provider>
+          </LibraryContext.Provider>
         </div>
-      </Router>
+      </div>
     );
   }
 }

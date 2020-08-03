@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import './LibraryPage.scss';
@@ -14,6 +14,14 @@ import { IconButton } from "components/buttons/buttons";
 import { ThemeSwitcher } from "components/utils";
 import { scrollToElement } from "utils";
 
+function scrollToShelf(shelf) {
+  scrollToElement(
+    document.getElementById(shelf.slug), {
+      behavior: 'smooth',
+      offset: -100
+    });
+}
+
 function LibraryPageHeader() {
   return (
     <Header>
@@ -26,9 +34,9 @@ function LibraryPageHeader() {
         <Nav className="Library-nav">
           {Shelves.inDisplayOrder.map(shelf => (
             <Nav.Item key={shelf.id}>
-              <Link to={`#${shelf.slug}`}>
+              <a onClick={() => scrollToShelf(shelf)}>
                 {shelf.shortDisplayName}
-              </Link>
+              </a>
             </Nav.Item>
           ))}
         </Nav>
@@ -72,22 +80,6 @@ const LibraryPageBody = React.memo(({ booksByID }) => {
 });
 
 const LibraryPage = React.memo(({ booksByID, loading, error }) => {
-  let location = useLocation();
-  const { hash } = location;
-  useEffect(() => {   // Scroll to a shelf based on the URL fragment
-    if (hash) {
-      setTimeout(() => {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element)
-          scrollToElement(element, {
-            behavior: 'smooth',
-            offset: -100
-          });
-      }, 0);
-    }
-  }, [hash]);
-
   return (
     <Scaffold
       loading={loading}

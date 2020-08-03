@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { debounce } from 'debounce';
-
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -110,6 +109,10 @@ class SearchPage extends React.Component {
     results: [],
     error: null
   }
+
+  // componentDidMount() {
+  //   window.scroll(0, 0);
+  // }
 
   onInputQueryChange = (value) => {
     this.setState({ inputQuery: value });
