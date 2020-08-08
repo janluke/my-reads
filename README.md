@@ -49,7 +49,7 @@ The purpose of the project is familiarizing with React and React Router.
 ### Tools and libraries
 
 - **Bootstrapping**: [Create React App](https://github.com/facebook/create-react-app).
-- **Routing**: React Router and `react-router-hash-link`.
+- **Routing**: React Router.
 - **Styling**: Sass, but I didn't use much its features.
 - **State management**: none, because it was out of scope. Redux is the central topic
   of the 2nd course. I used the Context API though.
