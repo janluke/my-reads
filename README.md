@@ -203,17 +203,17 @@ You'll need to make sure that books have the correct state while on the search p
 ### The code I used to describe the book object
 
 ```js
-function describe(obj) {
+function getSchemaOf(obj) {
   if (typeof obj !== "object") {
     return typeof obj;
   }
   else if (obj instanceof Array) {
-    return (obj.length > 0) ? [getSpecsOf(obj[0])] : [];
+    return (obj.length > 0) ? [getSchemaOf(obj[0])] : [];
   }
   else {
     let specs = {};
     for (let prop of Object.getOwnPropertyNames(obj)) {
-      specs[prop] = getSpecsOf(obj[prop]);
+      specs[prop] = getSchemaOf(obj[prop]);
     }
     return specs;
   }
@@ -221,7 +221,7 @@ function describe(obj) {
 
 BooksAPI.getAll().then(
   (data) => console.log(
-    JSON.stringify(describe(data[0]), null, 4)
+    JSON.stringify(getSchemaOf(data[0]), null, 4)
   )
 );
 ```
